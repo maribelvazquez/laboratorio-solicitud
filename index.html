@@ -110,7 +110,7 @@
     <p class="firma">GMC 360 · Centro Nacional de Estudios sobre el Terrorismo y su Financiamiento (CNT)</p>
     <p class="intro">Un espacio de trabajo cerrado en el que casos reales de convergencia criminal y financiamiento al terrorismo se analizan en dos capas: la de inteligencia y la de cumplimiento. Cada sesión cierra con un entregable que usted puede aplicar en su institución esa misma semana.</p>
     <dl class="ficha" id="ficha"></dl>
-    <div class="aviso"><b>ESTE FORMULARIO NO ES UNA INSCRIPCIÓN.</b> Por el formato de trabajo —equipos reducidos, casos con información sensible y análisis en vivo— la primera edición está limitada a 20 participantes y el ingreso es por selección. Un comité de ambas instituciones revisa cada solicitud y le responderemos en todos los casos. Tiempo estimado: 8 minutos.</div>
+    <div class="aviso"><b>ESTE FORMULARIO NO ES UNA INSCRIPCIÓN.</b> Por el formato de trabajo —equipos reducidos, casos con información sensible y análisis en vivo— la primera edición está limitada a 20 participantes y el ingreso es por selección. Un comité de ambas instituciones revisa cada solicitud y <b>le responderemos en todos los casos, en un plazo máximo de 5 días hábiles</b>. Llenar esta solicitud le tomará unos 8 minutos.</div>
   </div>
 </header>
 
@@ -169,7 +169,7 @@ const ficha = [
   ["Cuota", datos.cuota],
   ["Cuota preferente", datos.cuotaPreferente, true],
   ["Cupo", "20 participantes, por selección"],
-  ["Constancia", "Emitida conjuntamente por GMC 360 y el CNT"],
+  ["Constancia", "Emitida conjuntamente por GMC 360 y el CNT, con asistencia a las tres sesiones, participación y resolución de los casos"],
 ];
 document.getElementById("ficha").innerHTML = ficha.map(([t, d, dest]) =>
   `<div class="${dest ? "destacado" : ""}"><dt>${t}</dt><dd>${d}</dd></div>`).join("");

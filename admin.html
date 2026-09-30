@@ -74,6 +74,7 @@ onAuthStateChanged(auth, async user => {
   if (ok) await carga();
 });
 
+const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const fecha = ts => ts?.toDate ? ts.toDate() : null;
 const plano = v => Array.isArray(v) ? v.join("; ") : v === true ? "Sí" : v === false ? "No" : (v ?? "");
 
@@ -86,9 +87,9 @@ async function carga() {
   const cols = ["Recibida", "Estatus", "Nombre", "Institución", "Cargo", "Sector", "Experiencia", "Correo", "WhatsApp"];
   $("tabla").innerHTML = `<tr>${cols.map(c => `<th>${c}</th>`).join("")}</tr>` + filas.map(f => `<tr>
     <td>${fecha(f.creada)?.toLocaleString("es-MX") ?? ""}</td>
-    <td><select data-id="${f.id}">${ESTATUS.map(e => `<option ${e === f.estatus ? "selected" : ""}>${e}</option>`).join("")}</select></td>
-    <td>${f.p1_nombre}</td><td>${f.p5_institucion}</td><td>${f.p6_cargo}</td><td>${f.p7_sector}</td><td>${f.p9_experiencia}</td>
-    <td>${f.p2_correo}</td><td>${f.p3_whatsapp}</td></tr>`).join("");
+    <td><select data-id="${esc(f.id)}">${ESTATUS.map(e => `<option ${e === f.estatus ? "selected" : ""}>${e}</option>`).join("")}</select></td>
+    <td>${esc(f.p1_nombre)}</td><td>${esc(f.p5_institucion)}</td><td>${esc(f.p6_cargo)}</td><td>${esc(f.p7_sector)}</td><td>${esc(f.p9_experiencia)}</td>
+    <td>${esc(f.p2_correo)}</td><td>${esc(f.p3_whatsapp)}</td></tr>`).join("");
   document.querySelectorAll("select[data-id]").forEach(s => s.onchange = async () => {
     await updateDoc(doc(db, "solicitudes", s.dataset.id), { estatus: s.value });
     filas.find(f => f.id === s.dataset.id).estatus = s.value;

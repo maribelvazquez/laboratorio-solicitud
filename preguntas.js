@@ -3,7 +3,7 @@
 export const secciones = [
   {
     titulo: "Identificación",
-    descripcion: "Estos datos se utilizan para la emisión de su constancia y para el proceso de verificación descrito en el aviso de privacidad.",
+    descripcion: "Estos datos se utilizan para revisar su solicitud de admisión al Laboratorio y para el proceso de verificación descrito en el aviso de privacidad.",
     preguntas: [
       { id: "p1_nombre", texto: "Nombre completo", ayuda: "Tal como aparece en su identificación oficial.", tipo: "texto", req: true, max: 150 },
       { id: "p2_correo", texto: "Correo electrónico institucional", ayuda: "A esta dirección enviaremos la resolución de su solicitud.", tipo: "correo", req: true, max: 150 },
@@ -81,10 +81,10 @@ export const secciones = [
         "Sí, a las tres", "Sí, aunque podría faltar a una", "No puedo comprometerme a las tres",
       ]},
       { id: "p20_seleccion", texto: "Entiendo que esta es una solicitud sujeta a un proceso de selección y que enviarla no garantiza un lugar.", tipo: "acepto", etiqueta: "Entiendo y acepto" },
-      { id: "p21_cuota", texto: "Entiendo que, de ser aceptado, la cuota de participación es de $12,500 M.N., IVA incluido, y que debo cubrirla dentro de los {plazoPago} días naturales siguientes a la notificación para conservar mi lugar.", tipo: "acepto", etiqueta: "Entiendo y acepto" },
+      { id: "p21_cuota", texto: "Entiendo que, de ser aceptado, la cuota de participación es de $12,500 M.N., IVA incluido ($11,250 M.N. si mi solicitud se recibió antes del 15 de octubre), y que debo cubrirla dentro de los {plazoPago} días naturales siguientes a la notificación para conservar mi lugar.", tipo: "acepto", etiqueta: "Entiendo y acepto" },
       { id: "p22_confidencialidad", texto: "Me comprometo a mantener la confidencialidad de los casos, materiales y discusiones del Laboratorio, y a no reproducirlos ni difundirlos.", tipo: "acepto", etiqueta: "Me comprometo" },
-      { id: "p23_camara", texto: "Entiendo que las sesiones no se graban y que se trabaja con cámara encendida.", tipo: "acepto", etiqueta: "Entiendo y acepto" },
-      { id: "p24_privacidad", texto: "He leído y acepto el aviso de privacidad, incluida la verificación de mis datos y su tratamiento conjunto por GMC 360 y el CNT.", tipo: "acepto", etiqueta: "He leído y acepto", liga: true },
+      { id: "p23_camara", texto: "Entiendo que las sesiones se graban, que debo mantener la cámara encendida y participar activamente, y que la constancia se emite sólo a quien asista a las tres sesiones completas, participe en el trabajo de su equipo y entregue la resolución de los casos de cada sesión.", tipo: "acepto", etiqueta: "Entiendo y acepto" },
+      { id: "p24_privacidad", texto: "He leído y acepto el aviso de privacidad, incluida la verificación de mis datos en listas, la grabación de las sesiones y el tratamiento conjunto de mis datos por GMC 360 y el CNT.", tipo: "acepto", etiqueta: "He leído y acepto", liga: true },
     ],
   },
 ];
