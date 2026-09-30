@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laboratorio de Casos · Solicitud de participación</title>
+<meta name="description" content="Laboratorio de Casos en Inteligencia y Cumplimiento · GMC 360 y CNT · Solicitud de participación, primera edición.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --negro:#1b1b1e; --carbon:#393e41; --gris:#747975; --gris-claro:#dfdede;
+    --verde:#64c27b; --verde-claro:#87d895; --fondo:#f6fff8; --blanco:#ffffff;
+    --error:#b3261e;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:Inter,Arial,sans-serif;color:var(--negro);background:var(--blanco);line-height:1.55;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.eyebrow,.cifra{font-family:"Space Grotesk",Arial,sans-serif;font-weight:500;letter-spacing:-.01em}
+  a{color:inherit}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+
+  /* Portada */
+  header{background:linear-gradient(160deg,var(--negro) 0%,var(--carbon) 100%);color:var(--blanco);padding:72px 0 64px;border-bottom:4px solid var(--verde)}
+  .logos{display:flex;align-items:center;gap:28px;margin:0 0 48px}
+  .logos img.gmc{height:56px;width:auto}
+  .logos img.cnt{height:84px;width:auto}
+  .logos .sep{width:1px;height:56px;background:rgba(255,255,255,.28)}
+  footer img{height:22px;width:auto;vertical-align:middle;margin-left:8px}
+  .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:13px;color:var(--gris-claro);margin:0 0 20px}
+  header h1{font-size:clamp(34px,6vw,56px);line-height:1.05;margin:0 0 16px}
+  header h1 span{color:var(--verde)}
+  .firma{color:var(--gris-claro);font-size:16px;margin:0 0 40px;max-width:640px}
+  .intro{font-size:17px;color:#e9e9e9;max-width:680px;margin:0 0 40px}
+  .ficha{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid rgba(255,255,255,.18)}
+  .ficha div{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.18)}
+  .ficha div:nth-child(odd){padding-right:24px}
+  .ficha dt{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--gris-claro);margin-bottom:4px}
+  .ficha dd{margin:0;font-size:16px}
+  .ficha .destacado dd{color:var(--verde);font-weight:600}
+  .aviso{margin-top:32px;padding:18px 20px;border-left:3px solid var(--verde);background:rgba(100,194,123,.10);font-size:15px}
+  .aviso b{letter-spacing:.04em}
+
+  /* Formulario */
+  main{padding:56px 0 96px}
+  .progreso{display:flex;gap:6px;margin-bottom:12px}
+  .progreso i{flex:1;height:3px;background:var(--gris-claro)}
+  .progreso i.on{background:var(--verde)}
+  .paso-num{font-size:13px;color:var(--gris);margin:0 0 40px}
+  .seccion h2{font-size:32px;margin:0 0 8px}
+  .seccion .desc{color:var(--carbon);margin:0 0 32px;max-width:640px}
+  .p{padding:24px 0;border-top:1px solid var(--gris-claro)}
+  .p label.t,.p legend{display:block;font-weight:600;font-size:16px;margin-bottom:4px;padding:0}
+  .p .req{color:var(--verde);margin-left:2px}
+  .p .ayuda{font-size:14px;color:var(--gris);margin:0 0 12px}
+  fieldset{border:0;margin:0;padding:0;min-width:0}
+  input[type=text],input[type=email],textarea{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:1px solid #c9c9c9;border-radius:6px;background:var(--blanco);color:var(--negro);transition:border-color .15s}
+  textarea{min-height:140px;resize:vertical}
+  input:focus,textarea:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 3px rgba(100,194,123,.18)}
+  .contador{font-size:12px;color:var(--gris);text-align:right;margin-top:4px}
+  .opc{display:flex;gap:12px;align-items:flex-start;padding:10px 12px;margin:0 -12px;border-radius:6px;cursor:pointer}
+  .opc:hover{background:var(--fondo)}
+  .opc input{margin-top:4px;accent-color:var(--verde);width:18px;height:18px;flex:none}
+  .otro-txt{margin:6px 0 0 30px;width:calc(100% - 30px)!important}
+  .acepto{background:var(--fondo);border:1px solid #d7ecdc;border-radius:6px;padding:18px 20px}
+  .acepto p{margin:0 0 10px}
+  .p.invalida input[type=text],.p.invalida input[type=email],.p.invalida textarea{border-color:var(--error)}
+  .msg-error{display:none;color:var(--error);font-size:14px;margin-top:8px}
+  .p.invalida .msg-error{display:block}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  .nav{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid var(--gris-claro)}
+  button{font:inherit;font-weight:600;font-size:16px;border-radius:6px;padding:14px 28px;cursor:pointer;border:1px solid transparent}
+  .primario{background:var(--negro);color:var(--blanco)}
+  .primario:hover{background:var(--carbon)}
+  .primario[disabled]{opacity:.6;cursor:wait}
+  .secundario{background:transparent;color:var(--carbon);border-color:#c9c9c9}
+  .secundario:hover{border-color:var(--carbon)}
+  .oculto{display:none!important}
+
+  /* Confirmación */
+  .confirmacion{max-width:640px}
+  .confirmacion h2{font-size:36px;margin:0 0 16px}
+  .confirmacion .linea{width:56px;height:3px;background:var(--verde);margin-bottom:28px}
+  .confirmacion .alerta{border-left:3px solid var(--negro);padding:12px 16px;background:var(--fondo);font-weight:600}
+  .modo-prueba{background:#fff4e0;border:1px solid #f2c27b;color:#6b4300;padding:10px 14px;border-radius:6px;font-size:14px;margin-bottom:24px}
+
+  footer{background:var(--negro);color:var(--gris-claro);font-size:13px;padding:32px 0}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+  @media (max-width:640px){
+    header{padding:48px 0 40px}
+    .ficha{grid-template-columns:1fr}
+    .logos{gap:18px;margin-bottom:32px}
+    .logos img.gmc{height:40px}
+    .logos img.cnt{height:60px}
+    .logos .sep{height:40px}
+    .ficha div:nth-child(odd){padding-right:0}
+    .nav{flex-direction:column-reverse;gap:12px;align-items:stretch}
+    button{width:100%}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="logos"><img class="gmc" src="img/gmc360-blanco.png" alt="GMC 360 · Grupo Mexicano de Consultoría"><span class="sep"></span><img class="cnt" src="img/cnt.png" alt="Centro Nacional de Estudios sobre el Terrorismo y su Financiamiento"></div>
+    <p class="eyebrow">Primera edición · Solicitud de participación</p>
+    <h1>Laboratorio de Casos en <span>Inteligencia y Cumplimiento</span></h1>
+    <p class="firma">GMC 360 · Centro Nacional de Estudios sobre el Terrorismo y su Financiamiento (CNT)</p>
+    <p class="intro">Un espacio de trabajo cerrado en el que casos reales de convergencia criminal y financiamiento al terrorismo se analizan en dos capas: la de inteligencia y la de cumplimiento. Cada sesión cierra con un entregable que usted puede aplicar en su institución esa misma semana.</p>
+    <dl class="ficha" id="ficha"></dl>
+    <div class="aviso"><b>ESTE FORMULARIO NO ES UNA INSCRIPCIÓN.</b> Por el formato de trabajo —equipos reducidos, casos con información sensible y análisis en vivo— la primera edición está limitada a 20 participantes y el ingreso es por selección. Un comité de ambas instituciones revisa cada solicitud y le responderemos en todos los casos. Tiempo estimado: 8 minutos.</div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div id="modoPrueba" class="modo-prueba oculto">Modo de prueba: falta la configuración de Firebase. El formulario funciona, pero no guarda las respuestas.</div>
+    <form id="form" novalidate autocomplete="on">
+      <div class="progreso" id="progreso"></div>
+      <p class="paso-num" id="pasoNum"></p>
+      <div id="secciones"></div>
+      <div class="hp" aria-hidden="true"><label>No llenar <input type="text" name="sitio_web" id="hp" tabindex="-1" autocomplete="off"></label></div>
+      <div class="nav">
+        <button type="button" class="secundario" id="atras">Anterior</button>
+        <button type="button" class="primario" id="siguiente">Continuar</button>
+      </div>
+      <p class="msg-error" id="errorEnvio" style="text-align:right"></p>
+    </form>
+
+    <section id="gracias" class="confirmacion oculto" aria-live="polite">
+      <div class="linea"></div>
+      <h2>Gracias. Hemos recibido su solicitud.</h2>
+      <p id="txtRespuesta"></p>
+      <p class="alerta">No realice ningún pago antes de recibir esa notificación.</p>
+      <p id="txtDudas"></p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Laboratorio de Casos en Inteligencia y Cumplimiento · GMC 360 y CNT</span>
+    <span>Plataforma <img src="img/360educa-blanco.png" alt="360Educa"></span>
+  </div>
+</footer>
+
+<script type="module">
+import { firebaseConfig, datos } from "./config.js";
+import { secciones } from "./preguntas.js";
+
+const configurado = !Object.values(firebaseConfig).some(v => String(v).includes("PEGAR_AQUI"));
+let db = null, fs = null;
+if (configurado) {
+  const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
+  fs = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js");
+  db = fs.getFirestore(initializeApp(firebaseConfig));
+} else {
+  document.getElementById("modoPrueba").classList.remove("oculto");
+}
+
+// Ficha de la portada
+const ficha = [
+  ["Modalidad", "100% en línea, sesiones en vivo con trabajo en equipos"],
+  ["Sesiones", "Tres sesiones de tres horas, una por mes"],
+  ["Fechas", datos.fechas],
+  ["Horario", datos.horario],
+  ["Cuota", datos.cuota],
+  ["Cuota preferente", datos.cuotaPreferente, true],
+  ["Cupo", "20 participantes, por selección"],
+  ["Constancia", "Emitida conjuntamente por GMC 360 y el CNT"],
+];
+document.getElementById("ficha").innerHTML = ficha.map(([t, d, dest]) =>
+  `<div class="${dest ? "destacado" : ""}"><dt>${t}</dt><dd>${d}</dd></div>`).join("");
+
+// Render de secciones
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const texto = s => s.replace("{plazoPago}", datos.plazoPago);
+
+function campo(q) {
+  const req = q.req ? '<span class="req" aria-hidden="true">*</span>' : "";
+  const ayuda = q.ayuda ? `<p class="ayuda">${esc(q.ayuda)}</p>` : "";
+  const err = `<p class="msg-error">${q.tipo === "correo" ? "Escriba un correo válido." : "Este dato es obligatorio."}</p>`;
+  if (q.tipo === "texto" || q.tipo === "correo") {
+    return `<div class="p" data-id="${q.id}"><label class="t" for="${q.id}">${esc(q.texto)}${req}</label>${ayuda}
+      <input type="${q.tipo === "correo" ? "email" : "text"}" id="${q.id}" name="${q.id}" maxlength="${q.max}">${err}</div>`;
+  }
+  if (q.tipo === "parrafo") {
+    return `<div class="p" data-id="${q.id}"><label class="t" for="${q.id}">${esc(q.texto)}${req}</label>${ayuda}
+      <textarea id="${q.id}" name="${q.id}" maxlength="${q.max}"></textarea>
+      <div class="contador"><span data-cont="${q.id}">0</span> / ${q.max}</div>${err}</div>`;
+  }
+  if (q.tipo === "opcion" || q.tipo === "casillas") {
+    const t = q.tipo === "opcion" ? "radio" : "checkbox";
+    const ops = q.opciones.map((o, i) => `<label class="opc"><input type="${t}" name="${q.id}" value="${esc(o)}"><span>${esc(o)}</span></label>`).join("");
+    const otro = q.otro ? `<label class="opc"><input type="${t}" name="${q.id}" value="__otro"><span>Otro</span></label>
+      <input type="text" class="otro-txt oculto" id="${q.id}_otro" maxlength="200" placeholder="Especifique">` : "";
+    return `<fieldset class="p" data-id="${q.id}"><legend>${esc(q.texto)}${req}</legend>${ayuda}${ops}${otro}
+      <p class="msg-error">${q.tipo === "casillas" ? "Elija al menos una opción." : "Elija una opción."}</p></fieldset>`;
+  }
+  if (q.tipo === "acepto") {
+    const liga = q.liga ? ` <a href="${datos.avisoPrivacidad}" target="_blank" rel="noopener">Consultar el aviso de privacidad</a>.` : "";
+    return `<div class="p" data-id="${q.id}"><div class="acepto"><p>${esc(texto(q.texto))}${liga}</p>
+      <label class="opc"><input type="checkbox" name="${q.id}" value="si"><span><b>${esc(q.etiqueta)}</b></span></label></div>
+      <p class="msg-error">Esta confirmación es necesaria para procesar su solicitud.</p></div>`;
+  }
+}
+document.getElementById("secciones").innerHTML = secciones.map((s, i) =>
+  `<section class="seccion ${i ? "oculto" : ""}" data-paso="${i}">
+     <h2>${i + 1} · ${esc(s.titulo)}</h2>${s.descripcion ? `<p class="desc">${esc(s.descripcion)}</p>` : ""}
+     ${s.preguntas.map(campo).join("")}
+   </section>`).join("");
+
+// Interacciones
+const form = document.getElementById("form");
+form.addEventListener("input", e => {
+  const c = document.querySelector(`[data-cont="${e.target.id}"]`);
+  if (c) c.textContent = e.target.value.length;
+  const p = e.target.closest(".p"); if (p) p.classList.remove("invalida");
+});
+form.addEventListener("change", e => {
+  const name = e.target.name; if (!name) return;
+  const otro = document.getElementById(name + "_otro");
+  if (otro) {
+    const marcado = [...form.querySelectorAll(`[name="${name}"]`)].some(x => x.value === "__otro" && x.checked);
+    otro.classList.toggle("oculto", !marcado);
+    if (marcado) otro.focus();
+  }
+});
+
+function valor(q) {
+  if (q.tipo === "opcion") {
+    const v = form.querySelector(`[name="${q.id}"]:checked`)?.value || "";
+    return v === "__otro" ? "Otro: " + document.getElementById(q.id + "_otro").value.trim() : v;
+  }
+  if (q.tipo === "casillas") {
+    return [...form.querySelectorAll(`[name="${q.id}"]:checked`)].map(x =>
+      x.value === "__otro" ? "Otro: " + document.getElementById(q.id + "_otro").value.trim() : x.value);
+  }
+  if (q.tipo === "acepto") return !!form.querySelector(`[name="${q.id}"]:checked`);
+  return document.getElementById(q.id).value.trim();
+}
+function valida(q) {
+  const v = valor(q);
+  let ok = true;
+  if (q.tipo === "acepto") ok = v === true;
+  else if (q.tipo === "casillas") ok = !q.req || v.length > 0;
+  else if (q.req) ok = typeof v === "string" && v.length > 0 && v !== "Otro: ";
+  if (ok && q.tipo === "correo") ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+  if (ok && (q.tipo === "casillas") && v.includes("Otro: ")) ok = false;
+  form.querySelector(`[data-id="${q.id}"]`).classList.toggle("invalida", !ok);
+  return ok;
+}
+
+let paso = 0;
+const total = secciones.length;
+const atras = document.getElementById("atras"), sig = document.getElementById("siguiente");
+function pinta() {
+  document.querySelectorAll(".seccion").forEach(s => s.classList.toggle("oculto", +s.dataset.paso !== paso));
+  document.getElementById("progreso").innerHTML = secciones.map((_, i) => `<i class="${i <= paso ? "on" : ""}"></i>`).join("");
+  document.getElementById("pasoNum").textContent = `Sección ${paso + 1} de ${total}`;
+  atras.style.visibility = paso ? "visible" : "hidden";
+  sig.textContent = paso === total - 1 ? "Enviar solicitud" : "Continuar";
+}
+atras.onclick = () => { if (paso) { paso--; pinta(); scrollTo({ top: form.offsetTop - 24, behavior: "smooth" }); } };
+sig.onclick = async () => {
+  const qs = secciones[paso].preguntas;
+  const oks = qs.map(valida);
+  if (oks.includes(false)) {
+    form.querySelector(".p.invalida")?.scrollIntoView({ behavior: "smooth", block: "center" });
+    return;
+  }
+  if (paso < total - 1) { paso++; pinta(); scrollTo({ top: form.offsetTop - 24, behavior: "smooth" }); return; }
+  await enviar();
+};
+
+async function enviar() {
+  const err = document.getElementById("errorEnvio");
+  err.style.display = "none";
+  if (document.getElementById("hp").value) return muestraGracias(); // bot
+  const respuestas = {};
+  secciones.forEach(s => s.preguntas.forEach(q => { respuestas[q.id] = valor(q); }));
+  sig.disabled = true; sig.textContent = "Enviando…";
+  try {
+    if (db) {
+      await fs.addDoc(fs.collection(db, "solicitudes"), {
+        ...respuestas,
+        edicion: "2026-1",
+        preferente: new Date() < new Date("2026-10-15T00:00:00-06:00"),
+        estatus: "recibida",
+        creada: fs.serverTimestamp(),
+      });
+    } else {
+      console.log("MODO DE PRUEBA · solicitud:", respuestas);
+      await new Promise(r => setTimeout(r, 600));
+    }
+    muestraGracias();
+  } catch (e) {
+    console.error(e);
+    err.textContent = "No pudimos enviar su solicitud. Intente de nuevo en un momento o escríbanos a " + datos.correoDudas + ".";
+    err.style.display = "block";
+    sig.disabled = false; sig.textContent = "Enviar solicitud";
+  }
+}
+function muestraGracias() {
+  form.classList.add("oculto");
+  document.getElementById("txtRespuesta").textContent =
+    `El comité revisa los expedientes conforme se reciben. Le responderemos en un plazo máximo de ${datos.plazoRespuesta}, haya sido seleccionado o no. Si resulta aceptado, en ese mismo mensaje recibirá las instrucciones de pago y el plazo para cubrirlo.`;
+  document.getElementById("txtDudas").innerHTML = `Cualquier duda sobre su solicitud: <a href="mailto:${datos.correoDudas}">${datos.correoDudas}</a>`;
+  document.getElementById("gracias").classList.remove("oculto");
+  scrollTo({ top: document.querySelector("main").offsetTop, behavior: "smooth" });
+}
+pinta();
+</script>
+</body>
+</html>

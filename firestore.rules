@@ -1,0 +1,51 @@
+rules_version = '2';
+// Reglas de seguridad de la base de solicitudes.
+// Público: sólo puede CREAR una solicitud válida. Nadie de fuera puede leer, cambiar ni borrar.
+// Comité: puede leer y cambiar sólo el estatus. Pon aquí los mismos correos que en config.js.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function esComite() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in [
+          'mvazquez@gmc360.com.mx',
+          'samara@gmc360.com.mx',
+          'amanda@gmc360.com.mx',
+          'arely@gmc360.com.mx'
+        ];
+    }
+
+    function texto(v, max) { return v is string && v.size() > 0 && v.size() <= max; }
+    function textoOpc(v, max) { return v is string && v.size() <= max; }
+
+    match /solicitudes/{id} {
+      allow create: if request.resource.data.keys().hasOnly([
+            'p1_nombre','p2_correo','p3_whatsapp','p4_ubicacion','p5_institucion','p6_cargo',
+            'p7_sector','p8_funcion','p9_experiencia','p10_area',
+            'p11_metodologia','p12_matriz','p13_ft','p14_reportes','p15_herramientas',
+            'p16_motivo','p17_problema','p18_medio',
+            'p19_asistencia','p20_seleccion','p21_cuota','p22_confidencialidad','p23_camara','p24_privacidad',
+            'edicion','preferente','estatus','creada'])
+        && texto(request.resource.data.p1_nombre, 150)
+        && texto(request.resource.data.p2_correo, 150)
+        && texto(request.resource.data.p3_whatsapp, 30)
+        && texto(request.resource.data.p5_institucion, 200)
+        && texto(request.resource.data.p16_motivo, 1000)
+        && texto(request.resource.data.p17_problema, 700)
+        && request.resource.data.p8_funcion is list && request.resource.data.p8_funcion.size() <= 12
+        && request.resource.data.p20_seleccion == true
+        && request.resource.data.p21_cuota == true
+        && request.resource.data.p22_confidencialidad == true
+        && request.resource.data.p23_camara == true
+        && request.resource.data.p24_privacidad == true
+        && request.resource.data.estatus == 'recibida'
+        && request.resource.data.creada == request.time;
+
+      allow read: if esComite();
+      allow update: if esComite()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['estatus']);
+      allow delete: if false;
+    }
+  }
+}
